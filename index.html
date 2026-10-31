@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#234e3e">
+    <meta name="description" content="Small steps, every day. A simple, private habit tracker with daily check-ins and streaks. No account needed.">
+    <title>Habit streaks — Small steps, every day</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to habits</a>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Habit streaks home">
+        <span class="brand-mark" aria-hidden="true">h<span>.</span></span>
+        <span>habit streaks</span>
+      </a>
+      <span class="private-badge"><span aria-hidden="true">●</span> Just you. No account.</span>
+    </header>
+    <main id="main">
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">A LITTLE BETTER, EVERY DAY</p>
+          <h1 id="page-title">Small steps.<br><span>Steady progress.</span></h1>
+          <p class="intro-copy">Make a little space for what matters.<br>One habit, one day at a time.</p>
+        </div>
+        <div class="today-card">
+          <span class="eyebrow">YOUR FRESH START</span>
+          <time id="today-date"></time>
+          <span class="today-note">Today is a good day to show up.</span>
+          <div class="plant" aria-hidden="true"><span class="leaf left"></span><span class="leaf right"></span><span class="stem"></span><span class="soil"></span></div>
+        </div>
+      </section>
+
+      <section id="storage-error" class="error-panel" role="alert" hidden>
+        <h2>Your habits couldn't be saved or loaded</h2>
+        <p id="error-message"></p>
+        <div class="error-actions">
+          <button id="retry-storage" class="secondary" type="button">Try again</button>
+          <button id="reset-storage" class="danger-text" type="button" hidden>Reset saved data</button>
+        </div>
+      </section>
+
+      <section class="progress-panel" aria-labelledby="progress-title">
+        <div class="progress-heading"><h2 id="progress-title">Today's little wins</h2><span id="progress-count">0 of 0 complete</span></div>
+        <progress id="daily-progress" value="0" max="1" aria-labelledby="progress-title"></progress>
+        <p id="progress-note">Your next chapter starts with one small habit.</p>
+      </section>
+
+      <section class="habits-section" aria-labelledby="habits-title">
+        <div class="section-heading"><h2 id="habits-title">Your habits <span id="habit-count" class="count-badge">0</span></h2><span class="section-note">Consistency, not perfection.</span></div>
+        <form id="add-form" class="add-form">
+          <label class="sr-only" for="habit-name">New habit name</label>
+          <input id="habit-name" name="name" maxlength="80" placeholder="A small habit you'd like to build…" autocomplete="off" required>
+          <button class="primary" type="submit"><span aria-hidden="true">+</span> Add habit</button>
+        </form>
+        <div id="habit-list" class="habit-list"></div>
+        <div id="empty-state" class="empty-state">
+          <span class="empty-icon" aria-hidden="true">+</span>
+          <h3>Big changes start small.</h3>
+          <p>Add your first habit above. Keep it simple enough<br class="desktop-break"> to do even on a busy day.</p>
+          <div class="suggestions" aria-label="Habit ideas">
+            <button type="button" data-suggestion="Drink a glass of water">Drink a glass of water <span aria-hidden="true">↗</span></button>
+            <button type="button" data-suggestion="Read for 10 minutes">Read for 10 minutes <span aria-hidden="true">↗</span></button>
+            <button type="button" data-suggestion="Take a short walk">Take a short walk <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+      </section>
+      <aside class="gentle-note"><span aria-hidden="true">✳</span><p><strong>A missed day isn't a fresh start from zero.</strong> It's just a day. Come back tomorrow and keep growing.</p></aside>
+      <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    </main>
+    <footer><span class="footer-brand">habit streaks</span><p>Saved only in this browser. No accounts. No tracking.<br>Clearing browser data removes your habits.</p><span class="footer-note">Made for your everyday.</span></footer>
+
+    <dialog id="edit-dialog" aria-labelledby="edit-title">
+      <form id="edit-form">
+        <p class="eyebrow">MAKE IT YOURS</p>
+        <h2 id="edit-title">Rename habit</h2>
+        <label for="edit-name">Habit name</label>
+        <input id="edit-name" name="name" maxlength="80" required autocomplete="off">
+        <div class="dialog-actions"><button class="secondary" type="button" data-close>Cancel</button><button class="primary" type="submit">Save name</button></div>
+      </form>
+    </dialog>
+    <dialog id="delete-dialog" aria-labelledby="delete-title">
+      <p class="eyebrow">A LITTLE HOUSEKEEPING</p>
+      <h2 id="delete-title">Delete this habit?</h2>
+      <p id="delete-description"></p>
+      <p class="muted">Its check-ins and streak history will be permanently removed.</p>
+      <div class="dialog-actions"><button class="secondary" type="button" data-close autofocus>Keep habit</button><button id="confirm-delete" class="danger" type="button">Delete habit</button></div>
+    </dialog>
+    <dialog id="reset-dialog" aria-labelledby="reset-title">
+      <h2 id="reset-title">Reset saved data?</h2>
+      <p>This permanently removes all Habit streaks data from this browser, including any unreadable records. It cannot be undone.</p>
+      <div class="dialog-actions"><button class="secondary" type="button" data-close autofocus>Cancel</button><button id="confirm-reset" class="danger" type="button">Reset all data</button></div>
+    </dialog>
+    <noscript><p class="error-panel">JavaScript is required to save habits and track check-ins. Please enable it to use Habit streaks.</p></noscript>
+  </body>
+</html>
