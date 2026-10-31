@@ -8,6 +8,8 @@ Small steps, every day. A lightweight, mobile-friendly daily habit tracker with 
 - Check in for today, or toggle a check-in off if you made a mistake.
 - See your current and best streak, plus today's completion progress.
 
+On phones, a compact header prioritizes your habit list, with check-in and habit-action touch targets of at least 44 pixels. Three typical habit entries fit in a 390-by-844 viewport without scrolling. Shorter screens, longer names, enlarged text, an open keyboard, or storage error messages may require scrolling; habit names and controls are never clipped to force a fit.
+
 Your current streak includes consecutive days ending today **or yesterday**. An unfinished today doesn't break yesterday's streak; missing a full calendar day does. Best streak means your longest consecutive run. Days follow your device's **local calendar**, including daylight-saving changes. Only today's check-in can be edited.
 
 ## Run locally
